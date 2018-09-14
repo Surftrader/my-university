@@ -1,0 +1,106 @@
+2018-09-14 23:53:20 [main] TRACE StudentDaoImpl:25 - Entered findAll() method
+2018-09-14 23:53:21 [main] DEBUG PostgreConnectionUtils:22 - Creating connection to database
+2018-09-14 23:53:21 [main] DEBUG PostgreConnectionUtils:26 - Connection opened
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:31 - Created prepared statement and result set
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 4 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Ivan from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Ivanov from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 1 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=4, name=Ivan, surname=Ivanov], groupId=1]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 5 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Petr from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Petrov from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 1 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=5, name=Petr, surname=Petrov], groupId=1]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 6 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Sergey from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Sergeev from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 1 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=6, name=Sergey, surname=Sergeev], groupId=1]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 8 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Aleksandr from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Aleksandrov from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 2 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=8, name=Aleksandr, surname=Aleksandrov], groupId=2]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 9 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Ivan from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Sergeev from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 2 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=9, name=Ivan, surname=Sergeev], groupId=2]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 11 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Konstantin from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Grach from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 2 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=11, name=Konstantin, surname=Grach], groupId=2]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 12 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Olga from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Varenie from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 3 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=12, name=Olga, surname=Varenie], groupId=3]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 13 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Alena from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Kukuruza from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 3 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=13, name=Alena, surname=Kukuruza], groupId=3]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 14 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Dmitriy from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Petrov from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 3 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=14, name=Dmitriy, surname=Petrov], groupId=3]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 15 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Viktor from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Sokolov from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 3 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=15, name=Viktor, surname=Sokolov], groupId=3]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 16 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Misha from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Prygunov from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 4 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=16, name=Misha, surname=Prygunov], groupId=4]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 17 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Aleksey from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Alekseyev from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 4 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=17, name=Aleksey, surname=Alekseyev], groupId=4]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 18 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Karen from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Oganesyan from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 4 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=18, name=Karen, surname=Oganesyan], groupId=4]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 19 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Ahmat from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Ivanov from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 4 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=19, name=Ahmat, surname=Ivanov], groupId=4]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 20 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Anghela from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Miroshnik from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 4 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=20, name=Anghela, surname=Miroshnik], groupId=4]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 22 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Bogdana from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Prokofyeva from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 4 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=22, name=Bogdana, surname=Prokofyeva], groupId=4]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 10 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Alena from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Mashina from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 2 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=10, name=Alena, surname=Mashina], groupId=2]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 21 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Bogdan from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Prokofyev from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 4 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=21, name=Bogdan, surname=Prokofyev], groupId=4]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 7 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Sidorik from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Sidorov from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 1 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=7, name=Sidorik, surname=Sidorov], groupId=1]
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:35 - Set id of student = 54 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:37 - Set name of student = Новый from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:39 - Set surname of student = Студент from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:41 - Set group of student = 12 from database
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:43 - Add to list student: Student [toString()=Person [id=54, name=Новый, surname=Студент], groupId=12]
+2018-09-14 23:53:21 [main] INFO  StudentDaoImpl:49 - List of 20 students was found
+2018-09-14 23:53:21 [main] TRACE StudentDaoImpl:50 - Exited findAll() method
