@@ -1,14 +1,9 @@
 package com.poseal.university.model;
 
-import java.util.List;
-
 public class Faculty {
 
     private Integer id;
     private String name;
-    private Schedule schedule;
-    private List<Group> groups;
-    private List<Department> department;
 
     public Integer getId() {
         return id;
@@ -24,30 +19,6 @@ public class Faculty {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Schedule getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
-    }
-
-    public List<Department> getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(List<Department> department) {
-        this.department = department;
     }
 
     @Override

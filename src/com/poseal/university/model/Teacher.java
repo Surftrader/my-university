@@ -2,18 +2,28 @@ package com.poseal.university.model;
 
 public class Teacher extends Person {
 
-    private Subject subject;
+    private Integer subjectId;
+    private Integer departmentId;
 
-    public Subject getSubject() {
-        return subject;
+    public Integer getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
     @Override
     public String toString() {
-        return "Teacher [subject=" + subject + ", toString()=" + super.toString() + "]";
+        return "Teacher [toString()=" + super.toString() + ", subject=" + subjectId + ", departmentId=" + departmentId
+                + "]";
     }
 }

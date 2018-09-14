@@ -1,13 +1,10 @@
 package com.poseal.university.model;
 
-import java.util.List;
-
 public class Department {
 
     private Integer id;
     private String name;
-    private List<Teacher> teachers;
-    private List<Room> rooms;
+    private Integer facultyId;
 
     public Integer getId() {
         return id;
@@ -25,20 +22,12 @@ public class Department {
         this.name = name;
     }
 
-    public List<Teacher> getTeachers() {
-        return teachers;
+    public Integer getFacultyId() {
+        return facultyId;
     }
 
-    public void setTeachers(List<Teacher> teachers) {
-        this.teachers = teachers;
-    }
-
-    public List<Room> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
+    public void setFacultyId(Integer facultyId) {
+        this.facultyId = facultyId;
     }
 
     @Override
@@ -68,6 +57,6 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Department [id=" + id + ", name=" + name + "]";
+        return "Department [id=" + id + ", name=" + name + ", facultyId=" + facultyId + "]";
     }
 }

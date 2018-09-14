@@ -11,6 +11,7 @@ public class Lesson {
     private Subject subject;
     private Teacher teacher;
     private Room room;
+    private Schedule schedule;
 
     public Integer getId() {
         return id;
@@ -68,12 +69,21 @@ public class Lesson {
         this.room = room;
     }
 
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((group == null) ? 0 : group.hashCode());
         result = prime * result + ((room == null) ? 0 : room.hashCode());
+        result = prime * result + ((schedule == null) ? 0 : schedule.hashCode());
         result = prime * result + ((subject == null) ? 0 : subject.hashCode());
         result = prime * result + ((teacher == null) ? 0 : teacher.hashCode());
         result = prime * result + ((timeEnd == null) ? 0 : timeEnd.hashCode());
@@ -99,6 +109,11 @@ public class Lesson {
             if (other.room != null)
                 return false;
         } else if (!room.equals(other.room))
+            return false;
+        if (schedule == null) {
+            if (other.schedule != null)
+                return false;
+        } else if (!schedule.equals(other.schedule))
             return false;
         if (subject == null) {
             if (other.subject != null)
@@ -126,6 +141,6 @@ public class Lesson {
     @Override
     public String toString() {
         return "Lesson [id=" + id + ", timeStart=" + timeStart + ", timeEnd=" + timeEnd + ", group=" + group
-                + ", subject=" + subject + ", teacher=" + teacher + ", room=" + room + "]";
+                + ", subject=" + subject + ", teacher=" + teacher + ", room=" + room + ", facultyId=" + schedule + "]";
     }
 }

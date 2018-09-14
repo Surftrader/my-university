@@ -5,6 +5,7 @@ public class Room {
     private Integer id;
     private Integer number;
     private Integer capacity;
+    private Integer departmentId;
 
     public Integer getId() {
         return id;
@@ -28,6 +29,14 @@ public class Room {
 
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
+    }
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
     @Override
@@ -57,6 +66,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room [id=" + id + ", number=" + number + "]";
+        return "Room [id=" + id + ", number=" + number + ", capacity=" + capacity + ", departmentId=" + departmentId
+                + "]";
     }
 }

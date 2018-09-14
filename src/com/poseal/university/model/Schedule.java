@@ -1,10 +1,9 @@
 package com.poseal.university.model;
 
-import java.util.List;
-
 public class Schedule {
+
     private Integer id;
-    private List<Lesson> lessons;
+    private Integer facultyId;
 
     public Integer getId() {
         return id;
@@ -14,12 +13,12 @@ public class Schedule {
         this.id = id;
     }
 
-    public List<Lesson> getLessons() {
-        return lessons;
+    public Integer getFacultyId() {
+        return facultyId;
     }
 
-    public void setLessons(List<Lesson> lessons) {
-        this.lessons = lessons;
+    public void setFacultyId(Integer facultyId) {
+        this.facultyId = facultyId;
     }
 
     @Override
@@ -49,6 +48,6 @@ public class Schedule {
 
     @Override
     public String toString() {
-        return "Schedule [lessons=" + lessons + "]";
+        return "Schedule [faculty_id=" + facultyId + "]";
     }
 }

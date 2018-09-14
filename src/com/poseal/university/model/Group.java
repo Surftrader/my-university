@@ -1,12 +1,10 @@
 package com.poseal.university.model;
 
-import java.util.List;
-
 public class Group {
 
     private Integer id;
     private String name;
-    private List<Student> students;
+    private Integer facultyId;
 
     public Integer getId() {
         return id;
@@ -24,12 +22,12 @@ public class Group {
         this.name = name;
     }
 
-    public List<Student> getStudents() {
-        return students;
+    public Integer getFacultyId() {
+        return facultyId;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void setFacultyId(Integer facultyId) {
+        this.facultyId = facultyId;
     }
 
     @Override
@@ -59,6 +57,6 @@ public class Group {
 
     @Override
     public String toString() {
-        return "Group [id=" + id + ", name=" + name + "]";
+        return "Group [id=" + id + ", name=" + name + ", facultyId=" + facultyId + "]";
     }
 }
