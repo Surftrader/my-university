@@ -15,6 +15,7 @@ import com.poseal.university.dao.DepartmentDao;
 import com.poseal.university.dao.PostgreConnectionUtils;
 import com.poseal.university.exception.DAOException;
 import com.poseal.university.model.Department;
+import com.poseal.university.model.Faculty;
 
 public class DepartmentDaoImpl implements DepartmentDao {
 
@@ -150,5 +151,38 @@ public class DepartmentDaoImpl implements DepartmentDao {
         }
         log.info("Department after update: " + department);
         log.trace("Exited update() method");
+    }
+
+    @Override
+    public List<Department> findByFaculty(Faculty faculty) {
+        log.trace("Entered findByFaculty() method with agument faculty = {}", faculty);
+        List<Department> departments = new ArrayList<>();
+        final String sql = "SELECT * FROM department WHERE faculty_id=?";
+        try (Connection connection = PostgreConnectionUtils.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+            log.trace("Created prepared statement and result set");
+            statement.setInt(1, faculty.getId());
+            log.trace("Set param id={} into statment for query", faculty.getId());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                log.trace("Created result set");
+                while (resultSet.next()) {
+                    Department department = new Department();
+                    department.setId(resultSet.getInt(1));
+                    log.trace("Set id of department = {} from database", department.getId());
+                    department.setName(resultSet.getString(2));
+                    log.trace("Set name of department = {} from database", department.getName());
+                    department.setFacultyId(resultSet.getInt(3));
+                    log.trace("Set faculty of department = {} from database", department.getFacultyId());
+                    departments.add(department);
+                    log.trace("Add to list department: " + department);
+                }
+            }
+        } catch (SQLException e) {
+            log.error("Error while finding of list of departments!", e);
+            throw new DAOException("Error while finding of list of departments!", e);
+        }
+        log.info("List of " + departments.size() + " departments was found");
+        log.trace("Exited findByFaculty() method");
+        return departments;
     }
 }

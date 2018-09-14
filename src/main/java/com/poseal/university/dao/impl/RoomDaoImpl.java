@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import com.poseal.university.dao.PostgreConnectionUtils;
 import com.poseal.university.dao.RoomDao;
 import com.poseal.university.exception.DAOException;
+import com.poseal.university.model.Department;
 import com.poseal.university.model.Room;
 
 public class RoomDaoImpl implements RoomDao {
@@ -158,5 +159,39 @@ public class RoomDaoImpl implements RoomDao {
         }
         log.info("Room after update: " + room);
         log.trace("Exited update() method");
+    }
+
+    @Override
+    public List<Room> findByDepartment(Department department) {
+        log.trace("Entered findByDepartment() method with agument department = {}", department);
+        List<Room> rooms = new ArrayList<>();
+        final String sql = "SELECT * FROM room WHERE department_id=?";
+        try (Connection connection = PostgreConnectionUtils.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+            log.trace("Created prepared statement and result set");
+            statement.setInt(1, department.getId());
+            log.trace("Set param id={} into statment for query", department.getId());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Room room = new Room();
+                    room.setId(resultSet.getInt(1));
+                    log.trace("Set id of room = {} from database", room.getId());
+                    room.setNumber(resultSet.getInt(2));
+                    log.trace("Set id of room = {} from database", room.getNumber());
+                    room.setCapacity(resultSet.getInt(3));
+                    log.trace("Set id of room = {} from database", room.getCapacity());
+                    room.setDepartmentId(resultSet.getInt(4));
+                    log.trace("Set id of room = {} from database", room.getDepartmentId());
+                    rooms.add(room);
+                    log.trace("Add to list room: " + room);
+                }
+            }
+        } catch (SQLException e) {
+            log.error("Error while finding of list of rooms!", e);
+            throw new DAOException("Error while finding of list of rooms!", e);
+        }
+        log.info("List of " + rooms.size() + " rooms was found");
+        log.trace("Exited findByDepartment() method");
+        return rooms;
     }
 }

@@ -14,6 +14,8 @@ import org.apache.logging.log4j.Logger;
 import com.poseal.university.dao.PostgreConnectionUtils;
 import com.poseal.university.dao.TeacherDao;
 import com.poseal.university.exception.DAOException;
+import com.poseal.university.model.Department;
+import com.poseal.university.model.Subject;
 import com.poseal.university.model.Teacher;
 
 public class TeacherDaoImpl implements TeacherDao {
@@ -168,4 +170,74 @@ public class TeacherDaoImpl implements TeacherDao {
         log.trace("Exited update() method");
     }
 
+    public List<Teacher> findByDepartment(Department department) {
+        log.trace("Entered findByDepartment() method with agument department = {}", department);
+        List<Teacher> teachers = new ArrayList<>();
+        final String sql = "SELECT * FROM teacher WHERE department_id=?";
+        try (Connection connection = PostgreConnectionUtils.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+            log.trace("Created prepared statement and result set");
+            statement.setInt(1, department.getId());
+            log.trace("Set param id={} into statment for query", department.getId());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                log.trace("Created result set");
+                while (resultSet.next()) {
+                    Teacher teacher = new Teacher();
+                    teacher.setId(resultSet.getInt(1));
+                    log.trace("Set id of teacher = {} from database", teacher.getId());
+                    teacher.setName(resultSet.getString(2));
+                    log.trace("Set name of teacher = {} from database", teacher.getName());
+                    teacher.setSurname(resultSet.getString(3));
+                    log.trace("Set surname of teacher = {} from database", teacher.getSurname());
+                    teacher.setSubjectId(resultSet.getInt(4));
+                    log.trace("Set subject of teacher = {} from database", teacher.getSubjectId());
+                    teacher.setDepartmentId(resultSet.getInt(5));
+                    log.trace("Set department of teacher = {} from database", teacher.getDepartmentId());
+                    teachers.add(teacher);
+                    log.trace("Add to list teacher: " + teacher);
+                }
+            }
+        } catch (SQLException e) {
+            log.error("Error while finding of list of teachers!", e);
+            throw new DAOException("Error while finding of list of teachers!", e);
+        }
+        log.info("List of " + teachers.size() + " teachers was found");
+        log.trace("Exited findByDepartment() method");
+        return teachers;
+    }
+
+    @Override
+    public Teacher findBySubject(Subject subject) {
+        log.trace("Enered findBySubject() method with argument subject = {}", subject);
+        Teacher teacher = null;
+        final String sql = "SELECT * FROM teacher WHERE subject_id=?";
+        try (Connection connection = PostgreConnectionUtils.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+            log.trace("Created prepared statement");
+            statement.setInt(1, subject.getId());
+            log.trace("Set param id={} into statment for query", subject.getId());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                log.trace("Created result set");
+                if (resultSet.next()) {
+                    teacher = new Teacher();
+                    teacher.setId(resultSet.getInt(1));
+                    log.trace("Set id of teacher = {} from database", teacher.getId());
+                    teacher.setName(resultSet.getString(2));
+                    log.trace("Set name of teacher = {} from database", teacher.getName());
+                    teacher.setSurname(resultSet.getString(3));
+                    log.trace("Set surname of teacher = {} from database", teacher.getSurname());
+                    teacher.setSubjectId(resultSet.getInt(4));
+                    log.trace("Set subject of teacher = {} from database", teacher.getSubjectId());
+                    teacher.setDepartmentId(resultSet.getInt(5));
+                    log.trace("Set department of teacher = {} from database", teacher.getDepartmentId());
+                }
+            }
+        } catch (SQLException e) {
+            log.error("Error while finding of teacher!", e);
+            throw new DAOException("Error while finding of teacher!", e);
+        }
+        log.info("Teacher " + teacher + " was found");
+        log.trace("Exited findBySubject() method");
+        return teacher;
+    }
 }

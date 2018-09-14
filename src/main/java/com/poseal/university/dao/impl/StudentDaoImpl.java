@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import com.poseal.university.dao.PostgreConnectionUtils;
 import com.poseal.university.dao.StudentDao;
 import com.poseal.university.exception.DAOException;
+import com.poseal.university.model.Group;
 import com.poseal.university.model.Student;
 
 public class StudentDaoImpl implements StudentDao {
@@ -158,5 +159,39 @@ public class StudentDaoImpl implements StudentDao {
         }
         log.info("Student after update: " + student);
         log.trace("Exited update() method");
+    }
+
+    @Override
+    public List<Student> findByGroup(Group group) {
+        log.trace("Entered findStudentsByGroup() method with argument groupId = {}", group.getId());
+        List<Student> students = new ArrayList<>();
+        final String sql = "SELECT * FROM student WHERE group_id=?";
+        try (Connection connection = PostgreConnectionUtils.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+            log.trace("Created prepared statement and result set");
+            statement.setInt(1, group.getId());
+            log.trace("Set param id={} into statment for query", group.getId());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Student student = new Student();
+                    student.setId(resultSet.getInt(1));
+                    log.trace("Set id of student = {} from database", student.getId());
+                    student.setName(resultSet.getString(2));
+                    log.trace("Set name of student = {} from database", student.getName());
+                    student.setSurname(resultSet.getString(3));
+                    log.trace("Set surname of student = {} from database", student.getSurname());
+                    student.setGroupId(resultSet.getInt(4));
+                    log.trace("Set group of student = {} from database", student.getGroupId());
+                    students.add(student);
+                    log.trace("Add to list student: " + student);
+                }
+            }
+        } catch (SQLException e) {
+            log.error("Error while finding of list of students!", e);
+            throw new DAOException("Error while finding of list of students!", e);
+        }
+        log.info("List of " + students.size() + " students was found");
+        log.trace("Exited findStudentsByGroup() method");
+        return students;
     }
 }

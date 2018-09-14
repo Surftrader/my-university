@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import com.poseal.university.dao.GroupDao;
 import com.poseal.university.dao.PostgreConnectionUtils;
 import com.poseal.university.exception.DAOException;
+import com.poseal.university.model.Faculty;
 import com.poseal.university.model.Group;
 
 public class GroupDaoImpl implements GroupDao {
@@ -150,5 +151,38 @@ public class GroupDaoImpl implements GroupDao {
         }
         log.info("Group after update: " + group);
         log.trace("Exited update() method");
+    }
+
+    @Override
+    public List<Group> findByFaculty(Faculty faculty) {
+        log.trace("Entered findByFaculty() method with agument faculty = {}", faculty);
+        List<Group> groups = new ArrayList<>();
+        final String sql = "SELECT * FROM u_group WHERE faculty_id=?";
+        try (Connection connection = PostgreConnectionUtils.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
+            log.trace("Created prepared statement");
+            statement.setInt(1, faculty.getId());
+            log.trace("Set param id={} into statment for query", faculty.getId());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                log.trace("Created result set");
+                while (resultSet.next()) {
+                    Group group = new Group();
+                    group.setId(resultSet.getInt(1));
+                    log.trace("Set id of group = {} from database", group.getId());
+                    group.setName(resultSet.getString(2));
+                    log.trace("Set name of group = {} from database", group.getName());
+                    group.setFacultyId(resultSet.getInt(3));
+                    log.trace("Set faculty of group = {} from database", group.getFacultyId());
+                    groups.add(group);
+                    log.trace("Add to list group: " + group);
+                }
+            }
+        } catch (SQLException e) {
+            log.error("Error while finding of list of groups!", e);
+            throw new DAOException("Error while finding of list of groups!", e);
+        }
+        log.info("List of " + groups.size() + " groups was found");
+        log.trace("Exited findByFaculty() method");
+        return groups;
     }
 }
