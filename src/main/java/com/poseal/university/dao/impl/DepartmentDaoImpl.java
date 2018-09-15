@@ -154,7 +154,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public List<Department> findByFaculty(Faculty faculty) {
+    public List<Department> findOne(Faculty faculty) {
         log.trace("Entered findByFaculty() method with agument faculty = {}", faculty);
         List<Department> departments = new ArrayList<>();
         final String sql = "SELECT * FROM department WHERE faculty_id=?";

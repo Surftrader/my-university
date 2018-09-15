@@ -65,8 +65,10 @@ public class ScheduleGroupServlet extends HttpServlet {
         try {
             listLessons = service.findSchedule(group, before, after);
         } catch (DatePeriodException ex) {
+            String errorMessage = "Invalid date range!";
             log.trace("Invalid date range!", ex);
-            req.getRequestDispatcher("/errorpages/dateErrorPage.jsp").forward(req, resp);
+            req.setAttribute("errorMessage", errorMessage);
+            req.getRequestDispatcher("/errorpages/errorPage.jsp").forward(req, resp);
         }
         req.setAttribute("group", group);
         req.setAttribute("listLessons", listLessons);

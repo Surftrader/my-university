@@ -47,10 +47,10 @@ public class DepartmentServlet extends HttpServlet {
         Faculty faculty = facultyDao.findOne(department.getFacultyId());
         req.setAttribute("faculty", faculty);
 
-        List<Teacher> listTeachers = teacherDao.findByDepartment(department);
+        List<Teacher> listTeachers = teacherDao.findAll(department);
         req.setAttribute("listTeachers", listTeachers);
 
-        List<Room> listRooms = roomDao.findByDepartment(department);
+        List<Room> listRooms = roomDao.findAll(department);
         req.setAttribute("listRooms", listRooms);
         req.getRequestDispatcher("/models/department.jsp").forward(req, resp);
     }

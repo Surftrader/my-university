@@ -7,6 +7,6 @@ import com.poseal.university.model.Student;
 
 public interface StudentDao extends CrudDao<Student, Integer> {
 
-    List<Student> findByGroup(Group group);
+    List<Student> findAll(Group group);
 
 }

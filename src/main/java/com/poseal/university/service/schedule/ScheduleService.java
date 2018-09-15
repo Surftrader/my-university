@@ -34,7 +34,7 @@ public class ScheduleService {
             throw new DatePeriodException("Start time is later than end time!");
         }
 
-        return lessonDao.findListByTeacherForTime(teacher, start, end);
+        return lessonDao.findSchedule(teacher, start, end);
     }
 
     public List<Lesson> findSchedule(Group group, LocalDateTime start, LocalDateTime end) {
@@ -52,6 +52,6 @@ public class ScheduleService {
             throw new DatePeriodException("Start time is later than end time!");
         }
 
-        return lessonDao.findListByGroupForTime(group, start, end);
+        return lessonDao.findSchedule(group, start, end);
     }
 }

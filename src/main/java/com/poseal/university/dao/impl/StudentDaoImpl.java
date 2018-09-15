@@ -162,7 +162,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public List<Student> findByGroup(Group group) {
+    public List<Student> findAll(Group group) {
         log.trace("Entered findStudentsByGroup() method with argument groupId = {}", group.getId());
         List<Student> students = new ArrayList<>();
         final String sql = "SELECT * FROM student WHERE group_id=?";

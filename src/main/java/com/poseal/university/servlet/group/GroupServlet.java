@@ -39,7 +39,7 @@ public class GroupServlet extends HttpServlet {
         Group group = groupDao.findOne(Integer.parseInt(req.getParameter("id")));
         req.setAttribute("group", group);
 
-        List<Student> listStudents = studentDao.findByGroup(group);
+        List<Student> listStudents = studentDao.findAll(group);
         req.setAttribute("listStudents", listStudents);
 
         Faculty faculty = facultyDao.findOne(group.getFacultyId());

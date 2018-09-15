@@ -8,7 +8,7 @@
 <title>Teacher</title>
 </head>
 <body>
-    <jsp:include page="../_header.jsp"></jsp:include>
+    <jsp:include page="/_header.jsp"></jsp:include>
     <h1 align="center">Teacher: ${teacher.name} ${teacher.surname}</h1>
     <h2 align="center">
         Department: <a href="department?id=${department.id}">"${department.name}"</a>
@@ -45,6 +45,6 @@
             <a href="index.jsp">Main</a>
         </p>
     </div>
-    <jsp:include page="../_footer.jsp"></jsp:include>
+    <jsp:include page="/_footer.jsp"></jsp:include>
 </body>
 </html>

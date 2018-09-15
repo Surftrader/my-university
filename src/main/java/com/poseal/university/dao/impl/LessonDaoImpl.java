@@ -197,7 +197,7 @@ public class LessonDaoImpl implements LessonDao {
     }
 
     @Override
-    public List<Lesson> findListByGroupForTime(Group group, LocalDateTime start, LocalDateTime end) {
+    public List<Lesson> findSchedule(Group group, LocalDateTime start, LocalDateTime end) {
         log.trace("Entered findListByGroupForTime() method with aguments group = {}, start = {}, end = {}", group,
                 start, end);
         List<Lesson> lessons = new ArrayList<>();
@@ -246,7 +246,7 @@ public class LessonDaoImpl implements LessonDao {
     }
 
     @Override
-    public List<Lesson> findListByTeacherForTime(Teacher teacher, LocalDateTime start, LocalDateTime end) {
+    public List<Lesson> findSchedule(Teacher teacher, LocalDateTime start, LocalDateTime end) {
         log.trace("Entered findListByTeacherForTime() method with aguments teacher = {}, start = {}, end = {}", teacher,
                 start, end);
         List<Lesson> lessons = new ArrayList<>();

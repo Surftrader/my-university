@@ -9,7 +9,7 @@
 <title>Groups schedule</title>
 </head>
 <body>
-    <jsp:include page="../_header.jsp"></jsp:include>
+    <jsp:include page="/_header.jsp"></jsp:include>
     <h1 align="center">Schedule: "${group.name}"</h1>
     <div align="center">
         <table border="1" cellpadding="7" cellspacing="1">
@@ -42,6 +42,6 @@
             <a href="index.jsp">Main</a>
         </p>
     </div>
-    <jsp:include page="../_footer.jsp"></jsp:include>
+    <jsp:include page="/_footer.jsp"></jsp:include>
 </body>
 </html>

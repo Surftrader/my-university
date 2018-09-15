@@ -33,7 +33,7 @@ public class SubjectServlet extends HttpServlet {
         Subject subject = subjectDao.findOne(Integer.parseInt(req.getParameter("id")));
         req.setAttribute("subject", subject);
 
-        Teacher teacher = teacherDao.findBySubject(subject);
+        Teacher teacher = teacherDao.findOne(subject);
 
         req.setAttribute("teacher", teacher);
         req.getRequestDispatcher("/models/subject.jsp").forward(req, resp);

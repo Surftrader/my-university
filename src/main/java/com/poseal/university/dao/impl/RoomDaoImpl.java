@@ -162,7 +162,7 @@ public class RoomDaoImpl implements RoomDao {
     }
 
     @Override
-    public List<Room> findByDepartment(Department department) {
+    public List<Room> findAll(Department department) {
         log.trace("Entered findByDepartment() method with agument department = {}", department);
         List<Room> rooms = new ArrayList<>();
         final String sql = "SELECT * FROM room WHERE department_id=?";

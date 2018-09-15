@@ -8,8 +8,8 @@ import com.poseal.university.model.Teacher;
 
 public interface TeacherDao extends CrudDao<Teacher, Integer> {
 
-    List<Teacher> findByDepartment(Department department);
+    List<Teacher> findAll(Department department);
 
-    Teacher findBySubject(Subject subject);
+    Teacher findOne(Subject subject);
 
 }

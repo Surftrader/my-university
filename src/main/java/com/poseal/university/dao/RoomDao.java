@@ -7,6 +7,6 @@ import com.poseal.university.model.Room;
 
 public interface RoomDao extends CrudDao<Room, Integer>{
 
-    List<Room> findByDepartment(Department department);
+    List<Room> findAll(Department department);
 
 }

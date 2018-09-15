@@ -40,10 +40,10 @@ public class FacultyServlet extends HttpServlet {
         Faculty faculty = facultyDao.findOne(id);
         req.setAttribute("faculty", faculty);
 
-        List<Group> listGroups = groupDao.findByFaculty(faculty);
+        List<Group> listGroups = groupDao.findAll(faculty);
         req.setAttribute("listGroups", listGroups);
 
-        List<Department> listDepartment = departmentDao.findByFaculty(faculty);
+        List<Department> listDepartment = departmentDao.findOne(faculty);
         req.setAttribute("listDepartment", listDepartment);
 
         req.getRequestDispatcher("/models/faculty.jsp").forward(req, resp);

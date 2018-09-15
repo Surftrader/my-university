@@ -170,7 +170,8 @@ public class TeacherDaoImpl implements TeacherDao {
         log.trace("Exited update() method");
     }
 
-    public List<Teacher> findByDepartment(Department department) {
+    @Override
+    public List<Teacher> findAll(Department department) {
         log.trace("Entered findByDepartment() method with agument department = {}", department);
         List<Teacher> teachers = new ArrayList<>();
         final String sql = "SELECT * FROM teacher WHERE department_id=?";
@@ -207,7 +208,7 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
-    public Teacher findBySubject(Subject subject) {
+    public Teacher findOne(Subject subject) {
         log.trace("Enered findBySubject() method with argument subject = {}", subject);
         Teacher teacher = null;
         final String sql = "SELECT * FROM teacher WHERE subject_id=?";

@@ -154,7 +154,7 @@ public class GroupDaoImpl implements GroupDao {
     }
 
     @Override
-    public List<Group> findByFaculty(Faculty faculty) {
+    public List<Group> findAll(Faculty faculty) {
         log.trace("Entered findByFaculty() method with agument faculty = {}", faculty);
         List<Group> groups = new ArrayList<>();
         final String sql = "SELECT * FROM u_group WHERE faculty_id=?";

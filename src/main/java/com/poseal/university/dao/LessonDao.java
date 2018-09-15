@@ -9,8 +9,8 @@ import com.poseal.university.model.Teacher;
 
 public interface LessonDao extends CrudDao<Lesson, Integer> {
 
-    List<Lesson> findListByGroupForTime(Group group, LocalDateTime start, LocalDateTime end);
+    List<Lesson> findSchedule(Group group, LocalDateTime start, LocalDateTime end);
 
-    List<Lesson> findListByTeacherForTime(Teacher teacher, LocalDateTime start, LocalDateTime end);
+    List<Lesson> findSchedule(Teacher teacher, LocalDateTime start, LocalDateTime end);
 
 }
