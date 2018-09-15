@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource
+        name="jdbc/my_university_db"
+        auth="Container"
+        type="javax.sql.DataSource"
+        maxActive="100"
+        maxIdle="30"
+        maxWit="10000"
+        driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://localhost:5432/my_university_db"
+        username="rector"
+        password="rector" />
+</Context>
