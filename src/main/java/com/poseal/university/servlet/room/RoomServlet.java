@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.poseal.university.dao.DepartmentDao;
 import com.poseal.university.dao.RoomDao;
-import com.poseal.university.dao.impl.DepartmentDaoImpl;
-import com.poseal.university.dao.impl.RoomDaoImpl;
+import com.poseal.university.dao.impl.DepartmentDaoHibernate;
+import com.poseal.university.dao.impl.RoomDaoHibernate;
 import com.poseal.university.model.Department;
 import com.poseal.university.model.Room;
 
@@ -24,8 +24,8 @@ public class RoomServlet extends HttpServlet {
 
     @Override
     public void init() {
-        roomDao = new RoomDaoImpl();
-        departmentDao = new DepartmentDaoImpl();
+        roomDao = new RoomDaoHibernate();
+        departmentDao = new DepartmentDaoHibernate();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class RoomServlet extends HttpServlet {
         Room room = roomDao.findOne(Integer.parseInt(req.getParameter("id")));
         req.setAttribute("room", room);
 
-        Department department = departmentDao.findOne(room.getDepartmentId());
+        Department department = departmentDao.findOne(room.getDepartment().getId());
         req.setAttribute("department", department);
 
         req.getRequestDispatcher("/models/room.jsp").forward(req, resp);

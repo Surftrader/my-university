@@ -1,29 +1,42 @@
 package com.poseal.university.model;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "teacher")
 public class Teacher extends Person {
 
-    private Integer subjectId;
-    private Integer departmentId;
+    @OneToOne(mappedBy = "teacher")
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 
-    public Integer getSubjectId() {
-        return subjectId;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubjectId(Integer subjectId) {
-        this.subjectId = subjectId;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
     public String toString() {
-        return "Teacher [toString()=" + super.toString() + ", subject=" + subjectId + ", departmentId=" + departmentId
-                + "]";
+        return "Teacher [toString()=" + super.toString() + ", subject=" + subject + ", department=" + department
+                + ", lessons=" + "]";
     }
 }

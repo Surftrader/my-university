@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.poseal.university.dao.RoomDao;
-import com.poseal.university.dao.impl.RoomDaoImpl;
+import com.poseal.university.dao.impl.RoomDaoHibernate;
 import com.poseal.university.model.Room;
 
 @WebServlet("/rooms")
@@ -21,7 +21,7 @@ public class RoomListServlet extends HttpServlet {
 
     @Override
     public void init() {
-        roomDao = new RoomDaoImpl();
+        roomDao = new RoomDaoHibernate();
     }
 
     @Override

@@ -58,7 +58,8 @@ public class StudentListServlet extends HttpServlet {
         student.setSurname(studentSurname);
 
         try {
-            student.setGroupId(Integer.parseInt(groupId));
+            Group group = groupService.findOne(Integer.parseInt(groupId));
+            student.setGroup(group);
             student = studentService.saveStudent(student);
         } catch (ServiceException | IllegalArgumentException ex) {
             String errorMessage = "Invalid data!";
@@ -66,7 +67,7 @@ public class StudentListServlet extends HttpServlet {
             req.getRequestDispatcher("/errorpages/errorPage.jsp").forward(req, resp);
         }
 
-        Group group = groupService.findOne(student.getGroupId());
+        Group group = groupService.findOne(student.getGroup().getId());
         List<Group> listGroups = groupService.findAll();
 
         req.setAttribute("listGroups", listGroups);

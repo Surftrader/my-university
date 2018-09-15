@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.poseal.university.dao.DepartmentDao;
 import com.poseal.university.dao.SubjectDao;
 import com.poseal.university.dao.TeacherDao;
-import com.poseal.university.dao.impl.DepartmentDaoImpl;
-import com.poseal.university.dao.impl.SubjectDaoImpl;
-import com.poseal.university.dao.impl.TeacherDaoImpl;
+import com.poseal.university.dao.impl.DepartmentDaoHibernate;
+import com.poseal.university.dao.impl.SubjectDaoHibernate;
+import com.poseal.university.dao.impl.TeacherDaoHibernate;
 import com.poseal.university.model.Department;
 import com.poseal.university.model.Subject;
 import com.poseal.university.model.Teacher;
@@ -28,9 +28,9 @@ public class TeacherServlet extends HttpServlet {
 
     @Override
     public void init() {
-        teacherDao = new TeacherDaoImpl();
-        subjectDao = new SubjectDaoImpl();
-        departmentDao = new DepartmentDaoImpl();
+        teacherDao = new TeacherDaoHibernate();
+        subjectDao = new SubjectDaoHibernate();
+        departmentDao = new DepartmentDaoHibernate();
     }
 
     @Override
@@ -38,10 +38,10 @@ public class TeacherServlet extends HttpServlet {
         Teacher teacher = teacherDao.findOne(Integer.parseInt(req.getParameter("id")));
         req.setAttribute("teacher", teacher);
 
-        Subject subject = subjectDao.findOne(teacher.getSubjectId());
+        Subject subject = teacher.getSubject();
         req.setAttribute("subject", subject);
 
-        Department department = departmentDao.findOne(teacher.getDepartmentId());
+        Department department = teacher.getDepartment();
         req.setAttribute("department", department);
 
         req.getRequestDispatcher("/models/teacher.jsp").forward(req, resp);

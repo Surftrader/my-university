@@ -1,9 +1,29 @@
 package com.poseal.university.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "subject")
 public class Subject {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+
+    @Column(name = "name")
     private String name;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Teacher teacher;
 
     public Integer getId() {
         return id;
@@ -19,6 +39,14 @@ public class Subject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     @Override

@@ -1,9 +1,24 @@
 package com.poseal.university.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "schedule")
 public class Schedule {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-    private Integer facultyId;
+
+    @OneToOne
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
 
     public Integer getId() {
         return id;
@@ -13,12 +28,12 @@ public class Schedule {
         this.id = id;
     }
 
-    public Integer getFacultyId() {
-        return facultyId;
+    public Faculty getFaculty() {
+        return faculty;
     }
 
-    public void setFacultyId(Integer facultyId) {
-        this.facultyId = facultyId;
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 
     @Override
@@ -48,6 +63,6 @@ public class Schedule {
 
     @Override
     public String toString() {
-        return "Schedule [faculty_id=" + facultyId + "]";
+        return "Schedule [faculty=" + faculty.getName() + "]";
     }
 }

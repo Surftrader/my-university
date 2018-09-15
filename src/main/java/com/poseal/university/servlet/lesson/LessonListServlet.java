@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.poseal.university.dao.LessonDao;
-import com.poseal.university.dao.impl.LessonDaoImpl;
+import com.poseal.university.dao.impl.LessonDaoHibernate;
 import com.poseal.university.model.Lesson;
 
 @WebServlet("/lessons")
@@ -21,7 +21,7 @@ public class LessonListServlet extends HttpServlet {
 
     @Override
     public void init() {
-        lessonDao = new LessonDaoImpl();
+        lessonDao = new LessonDaoHibernate();
     }
 
     @Override

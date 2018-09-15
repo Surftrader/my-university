@@ -3,14 +3,14 @@ package com.poseal.university.service.group;
 import java.util.List;
 
 import com.poseal.university.dao.GroupDao;
-import com.poseal.university.dao.impl.GroupDaoImpl;
+import com.poseal.university.dao.impl.GroupDaoHibernate;
 import com.poseal.university.model.Group;
 
 public class GroupService {
     private GroupDao groupDao;
 
     public GroupService() {
-        groupDao = new GroupDaoImpl();
+        groupDao = new GroupDaoHibernate();
     }
 
     public Group findOne(Integer groupId) {

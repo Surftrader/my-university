@@ -33,7 +33,7 @@ public class StudentServlet extends HttpServlet {
         Student student = studentService.findOne(Integer.parseInt(req.getParameter("id")));
         req.setAttribute("student", student);
 
-        Group group = groupService.findOne(student.getGroupId());
+        Group group = groupService.findOne(student.getGroup().getId());
         req.setAttribute("group", group);
 
         List<Group> listGroups = groupService.findAll();
@@ -61,7 +61,7 @@ public class StudentServlet extends HttpServlet {
             student.setId(Integer.parseInt(studentId));
             student.setName(studentName);
             student.setSurname(studentSurname);
-            student.setGroupId(group.getId());
+            student.setGroup(group);
 
             student = studentService.saveStudent(student);
 

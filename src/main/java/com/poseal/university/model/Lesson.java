@@ -2,15 +2,47 @@ package com.poseal.university.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "lesson")
 public class Lesson {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+
+    @Column(name = "time_start")
     private LocalDateTime timeStart;
+
+    @Column(name = "time_end")
     private LocalDateTime timeEnd;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id")
     private Group group;
+
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
     private Subject subject;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
+
+    @ManyToOne
+    @JoinColumn(name = "room_id")
     private Room room;
+
+    @ManyToOne
+    @JoinColumn(name = "schedule_id")
     private Schedule schedule;
 
     public Integer getId() {

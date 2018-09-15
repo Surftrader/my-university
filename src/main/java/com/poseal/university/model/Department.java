@@ -1,10 +1,28 @@
 package com.poseal.university.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "department")
 public class Department {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+
+    @Column(name = "name")
     private String name;
-    private Integer facultyId;
+
+    @ManyToOne
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
 
     public Integer getId() {
         return id;
@@ -22,12 +40,12 @@ public class Department {
         this.name = name;
     }
 
-    public Integer getFacultyId() {
-        return facultyId;
+    public Faculty getFaculty() {
+        return faculty;
     }
 
-    public void setFacultyId(Integer facultyId) {
-        this.facultyId = facultyId;
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 
     @Override
@@ -57,6 +75,6 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Department [id=" + id + ", name=" + name + ", facultyId=" + facultyId + "]";
+        return "Department [id=" + id + ", name=" + name + ", faculty=" + faculty.getName() + "]";
     }
 }

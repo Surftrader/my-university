@@ -1,9 +1,28 @@
 package com.poseal.university.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
+
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Person {
 
+    @Id
+    @SequenceGenerator(name = "jpaSequence", sequenceName = "JPA_SEQUENCE", allocationSize = 1, initialValue = 50)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jpaSequence")
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "name", length = 30)
     private String name;
+
+    @Column(name = "surname", length = 30)
     private String surname;
 
     public Integer getId() {

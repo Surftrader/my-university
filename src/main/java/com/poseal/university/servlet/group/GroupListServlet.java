@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.poseal.university.dao.GroupDao;
-import com.poseal.university.dao.impl.GroupDaoImpl;
+import com.poseal.university.dao.impl.GroupDaoHibernate;
 import com.poseal.university.model.Group;
 
 @WebServlet("/groups")
@@ -21,7 +21,7 @@ public class GroupListServlet extends HttpServlet {
 
     @Override
     public void init() {
-        groupDao = new GroupDaoImpl();
+        groupDao = new GroupDaoHibernate();
     }
 
     @Override

@@ -13,10 +13,10 @@ import com.poseal.university.dao.DepartmentDao;
 import com.poseal.university.dao.FacultyDao;
 import com.poseal.university.dao.RoomDao;
 import com.poseal.university.dao.TeacherDao;
-import com.poseal.university.dao.impl.DepartmentDaoImpl;
-import com.poseal.university.dao.impl.FacultyDaoImpl;
-import com.poseal.university.dao.impl.RoomDaoImpl;
-import com.poseal.university.dao.impl.TeacherDaoImpl;
+import com.poseal.university.dao.impl.DepartmentDaoHibernate;
+import com.poseal.university.dao.impl.FacultyDaoHibernate;
+import com.poseal.university.dao.impl.RoomDaoHibernate;
+import com.poseal.university.dao.impl.TeacherDaoHibernate;
 import com.poseal.university.model.Department;
 import com.poseal.university.model.Faculty;
 import com.poseal.university.model.Room;
@@ -33,10 +33,10 @@ public class DepartmentServlet extends HttpServlet {
 
     @Override
     public void init() {
-        departmentDao = new DepartmentDaoImpl();
-        facultyDao = new FacultyDaoImpl();
-        teacherDao = new TeacherDaoImpl();
-        roomDao = new RoomDaoImpl();
+        departmentDao = new DepartmentDaoHibernate();
+        facultyDao = new FacultyDaoHibernate();
+        teacherDao = new TeacherDaoHibernate();
+        roomDao = new RoomDaoHibernate();
     }
 
     @Override
@@ -44,7 +44,7 @@ public class DepartmentServlet extends HttpServlet {
         Department department = departmentDao.findOne(Integer.parseInt(req.getParameter("id")));
         req.setAttribute("department", department);
 
-        Faculty faculty = facultyDao.findOne(department.getFacultyId());
+        Faculty faculty = facultyDao.findOne(department.getFaculty().getId());
         req.setAttribute("faculty", faculty);
 
         List<Teacher> listTeachers = teacherDao.findAll(department);

@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.poseal.university.dao.FacultyDao;
 import com.poseal.university.dao.GroupDao;
 import com.poseal.university.dao.StudentDao;
-import com.poseal.university.dao.impl.FacultyDaoImpl;
-import com.poseal.university.dao.impl.GroupDaoImpl;
-import com.poseal.university.dao.impl.StudentDaoImpl;
+import com.poseal.university.dao.impl.FacultyDaoHibernate;
+import com.poseal.university.dao.impl.GroupDaoHibernate;
+import com.poseal.university.dao.impl.StudentDaoHibernate;
 import com.poseal.university.model.Faculty;
 import com.poseal.university.model.Group;
 import com.poseal.university.model.Student;
@@ -29,9 +29,9 @@ public class GroupServlet extends HttpServlet {
 
     @Override
     public void init() {
-        groupDao = new GroupDaoImpl();
-        studentDao = new StudentDaoImpl();
-        facultyDao = new FacultyDaoImpl();
+        groupDao = new GroupDaoHibernate();
+        studentDao = new StudentDaoHibernate();
+        facultyDao = new FacultyDaoHibernate();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class GroupServlet extends HttpServlet {
         List<Student> listStudents = studentDao.findAll(group);
         req.setAttribute("listStudents", listStudents);
 
-        Faculty faculty = facultyDao.findOne(group.getFacultyId());
+        Faculty faculty = facultyDao.findOne(group.getFaculty().getId());
         req.setAttribute("faculty", faculty);
 
         req.getRequestDispatcher("/models/group.jsp").forward(req, resp);

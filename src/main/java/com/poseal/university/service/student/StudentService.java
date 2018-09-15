@@ -3,7 +3,7 @@ package com.poseal.university.service.student;
 import java.util.List;
 
 import com.poseal.university.dao.StudentDao;
-import com.poseal.university.dao.impl.StudentDaoImpl;
+import com.poseal.university.dao.impl.StudentDaoHibernate;
 import com.poseal.university.exception.ServiceException;
 import com.poseal.university.model.Group;
 import com.poseal.university.model.Student;
@@ -13,7 +13,7 @@ public class StudentService {
     private StudentDao studentDao;
 
     public StudentService() {
-        studentDao = new StudentDaoImpl();
+        studentDao = new StudentDaoHibernate();
     }
 
     public Student findOne(Integer studentId) {

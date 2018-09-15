@@ -1,11 +1,31 @@
 package com.poseal.university.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "room")
 public class Room {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+
+    @Column(name = "number")
     private Integer number;
+
+    @Column(name = "capacity")
     private Integer capacity;
-    private Integer departmentId;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
     public Integer getId() {
         return id;
@@ -31,12 +51,12 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
@@ -66,7 +86,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room [id=" + id + ", number=" + number + ", capacity=" + capacity + ", departmentId=" + departmentId
-                + "]";
+        return "Room [id=" + id + ", number=" + number + ", capacity=" + capacity + ", department="
+                + department.getName() + "]";
     }
 }

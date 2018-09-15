@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.poseal.university.dao.SubjectDao;
 import com.poseal.university.dao.TeacherDao;
-import com.poseal.university.dao.impl.SubjectDaoImpl;
-import com.poseal.university.dao.impl.TeacherDaoImpl;
+import com.poseal.university.dao.impl.SubjectDaoHibernate;
+import com.poseal.university.dao.impl.TeacherDaoHibernate;
 import com.poseal.university.model.Subject;
 import com.poseal.university.model.Teacher;
 
@@ -24,8 +24,8 @@ public class SubjectServlet extends HttpServlet {
 
     @Override
     public void init() {
-        subjectDao = new SubjectDaoImpl();
-        teacherDao = new TeacherDaoImpl();
+        subjectDao = new SubjectDaoHibernate();
+        teacherDao = new TeacherDaoHibernate();
     }
 
     @Override

@@ -7,6 +7,6 @@ import com.poseal.university.model.Faculty;
 
 public interface DepartmentDao extends CrudDao<Department, Integer> {
 
-    List<Department> findOne(Faculty faculty);
+    List<Department> findAll(Faculty faculty);
 
 }

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.poseal.university.dao.SubjectDao;
-import com.poseal.university.dao.impl.SubjectDaoImpl;
+import com.poseal.university.dao.impl.SubjectDaoHibernate;
 import com.poseal.university.model.Subject;
 
 @WebServlet("/subjects")
@@ -21,7 +21,7 @@ public class SubjectListServlet extends HttpServlet {
 
     @Override
     public void init() {
-        subjectDao = new SubjectDaoImpl();
+        subjectDao = new SubjectDaoHibernate();
     }
 
     @Override

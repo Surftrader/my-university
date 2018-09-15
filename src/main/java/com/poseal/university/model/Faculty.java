@@ -1,9 +1,26 @@
 package com.poseal.university.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "faculty")
 public class Faculty {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+
+    @Column(name = "name")
     private String name;
+
+    @OneToOne(mappedBy = "faculty")
+    private Schedule schedule;
 
     public Integer getId() {
         return id;
@@ -19,6 +36,14 @@ public class Faculty {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     @Override

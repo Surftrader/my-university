@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.poseal.university.constants.AppConstants;
 import com.poseal.university.dao.LessonDao;
-import com.poseal.university.dao.impl.LessonDaoImpl;
+import com.poseal.university.dao.impl.LessonDaoHibernate;
 import com.poseal.university.exception.DatePeriodException;
 import com.poseal.university.model.Group;
 import com.poseal.university.model.Lesson;
@@ -16,7 +16,7 @@ public class ScheduleService {
     private LessonDao lessonDao;
 
     public ScheduleService() {
-        lessonDao = new LessonDaoImpl();
+        lessonDao = new LessonDaoHibernate();
     }
 
     public List<Lesson> findSchedule(Teacher teacher, LocalDateTime start, LocalDateTime end) {

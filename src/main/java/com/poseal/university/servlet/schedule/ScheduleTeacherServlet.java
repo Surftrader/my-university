@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.poseal.university.constants.AppConstants;
 import com.poseal.university.dao.TeacherDao;
-import com.poseal.university.dao.impl.TeacherDaoImpl;
+import com.poseal.university.dao.impl.TeacherDaoHibernate;
 import com.poseal.university.exception.DatePeriodException;
 import com.poseal.university.model.Lesson;
 import com.poseal.university.model.Teacher;
@@ -35,7 +35,7 @@ public class ScheduleTeacherServlet extends HttpServlet {
     @Override
     public void init() {
         service = new ScheduleService();
-        teacherDao = new TeacherDaoImpl();
+        teacherDao = new TeacherDaoHibernate();
     }
 
     @Override

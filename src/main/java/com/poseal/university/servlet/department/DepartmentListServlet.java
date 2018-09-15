@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.poseal.university.dao.DepartmentDao;
-import com.poseal.university.dao.impl.DepartmentDaoImpl;
+import com.poseal.university.dao.impl.DepartmentDaoHibernate;
 import com.poseal.university.model.Department;
 
 @WebServlet("/departments")
@@ -21,7 +21,7 @@ public class DepartmentListServlet extends HttpServlet {
 
     @Override
     public void init() {
-        departmentDao = new DepartmentDaoImpl();
+        departmentDao = new DepartmentDaoHibernate();
     }
 
     @Override

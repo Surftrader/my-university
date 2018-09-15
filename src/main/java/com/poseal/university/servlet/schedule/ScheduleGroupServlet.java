@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.poseal.university.constants.AppConstants;
 import com.poseal.university.dao.GroupDao;
-import com.poseal.university.dao.impl.GroupDaoImpl;
+import com.poseal.university.dao.impl.GroupDaoHibernate;
 import com.poseal.university.exception.DatePeriodException;
 import com.poseal.university.model.Group;
 import com.poseal.university.model.Lesson;
@@ -35,7 +35,7 @@ public class ScheduleGroupServlet extends HttpServlet {
     @Override
     public void init() {
         service = new ScheduleService();
-        groupDao = new GroupDaoImpl();
+        groupDao = new GroupDaoHibernate();
     }
 
     @Override
