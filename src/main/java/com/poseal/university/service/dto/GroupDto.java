@@ -1,28 +1,22 @@
-package com.poseal.university.model;
+package com.poseal.university.service.dto;
 
-import javax.json.bind.annotation.JsonbTransient;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name = "faculty")
-public class Faculty {
+import javax.xml.bind.annotation.XmlRootElement;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+import com.poseal.university.model.Link;
+
+@XmlRootElement
+public class GroupDto {
+
     private Integer id;
 
-    @Column(name = "name")
     private String name;
 
-    @OneToOne(mappedBy = "faculty")
-    @JsonbTransient
-    private Schedule schedule;
+    private Integer facultyId;
+
+    private List<Link> links = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -40,12 +34,27 @@ public class Faculty {
         this.name = name;
     }
 
-    public Schedule getSchedule() {
-        return schedule;
+    public Integer getFacultyId() {
+        return facultyId;
     }
 
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
+    public void setFacultyId(Integer facultyId) {
+        this.facultyId = facultyId;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+    public void addLink(String url, String rel) {
+        Link link = new Link();
+        link.setLink(url);
+        link.setRel(rel);
+        links.add(link);
     }
 
     @Override
@@ -64,7 +73,7 @@ public class Faculty {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Faculty other = (Faculty) obj;
+        GroupDto other = (GroupDto) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -75,6 +84,6 @@ public class Faculty {
 
     @Override
     public String toString() {
-        return "Faculty [id=" + id + ", name=" + name + "]";
+        return "GroupDto [id=" + id + ", name=" + name + ", facultyId=" + facultyId + ", links=" + links + "]";
     }
 }

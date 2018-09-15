@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.poseal.university.exception.ServiceException;
-import com.poseal.university.model.Group;
-import com.poseal.university.model.Student;
+import com.poseal.university.service.dto.GroupDto;
+import com.poseal.university.service.dto.StudentDto;
 import com.poseal.university.service.group.GroupService;
 import com.poseal.university.service.student.StudentService;
 
@@ -32,12 +32,12 @@ public class StudentListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String param = req.getParameter("id");
-        List<Student> listStudents = null;
+        List<StudentDto> listStudents = null;
 
         if (param == null) {
             listStudents = studentService.findAll();
         } else {
-            Group group = groupService.findOne(Integer.parseInt(param));
+            GroupDto group = groupService.findOne(Integer.parseInt(param));
             listStudents = studentService.findAll(group);
         }
         req.setAttribute("listStudents", listStudents);
@@ -53,13 +53,13 @@ public class StudentListServlet extends HttpServlet {
         String studentSurname = req.getParameter("studentSurname");
         String groupId = req.getParameter("group");
 
-        Student student = new Student();
+        StudentDto student = new StudentDto();
         student.setName(studentName);
         student.setSurname(studentSurname);
 
         try {
-            Group group = groupService.findOne(Integer.parseInt(groupId));
-            student.setGroup(group);
+            GroupDto group = groupService.findOne(Integer.parseInt(groupId));
+            student.setGroupId(group.getId());
             student = studentService.saveStudent(student);
         } catch (ServiceException | IllegalArgumentException ex) {
             String errorMessage = "Invalid data!";
@@ -67,8 +67,8 @@ public class StudentListServlet extends HttpServlet {
             req.getRequestDispatcher("/errorpages/errorPage.jsp").forward(req, resp);
         }
 
-        Group group = groupService.findOne(student.getGroup().getId());
-        List<Group> listGroups = groupService.findAll();
+        GroupDto group = groupService.findOne(student.getGroupId());
+        List<GroupDto> listGroups = groupService.findAll();
 
         req.setAttribute("listGroups", listGroups);
         req.setAttribute("student", student);

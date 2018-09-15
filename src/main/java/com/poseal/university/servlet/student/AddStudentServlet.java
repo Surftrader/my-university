@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.poseal.university.model.Group;
+import com.poseal.university.service.dto.GroupDto;
 import com.poseal.university.service.group.GroupService;
 
 @WebServlet("/student/add")
@@ -27,7 +27,7 @@ public class AddStudentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String group = req.getParameter("group");
         req.setAttribute("group", group);
-        List<Group> listGroups = groupService.findAll();
+        List<GroupDto> listGroups = groupService.findAll();
 
         req.setAttribute("listGroups", listGroups);
         req.getRequestDispatcher("/models/student.jsp").forward(req, resp);

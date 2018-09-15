@@ -54,4 +54,8 @@ public class ScheduleService {
 
         return lessonDao.findSchedule(group, start, end);
     }
+
+    public List<Lesson> findAll() {
+        return lessonDao.findAll();
+    }
 }

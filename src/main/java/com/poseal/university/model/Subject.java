@@ -1,5 +1,6 @@
 package com.poseal.university.model;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class Subject {
 
     @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
+    @JsonbTransient
     private Teacher teacher;
 
     public Integer getId() {

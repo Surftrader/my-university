@@ -1,5 +1,6 @@
 package com.poseal.university.model;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,6 +12,7 @@ public class Student extends Person {
 
     @ManyToOne
     @JoinColumn(name = "group_id")
+    @JsonbTransient
     private Group group;
 
     public Group getGroup() {

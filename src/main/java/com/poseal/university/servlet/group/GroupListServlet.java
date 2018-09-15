@@ -9,25 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.poseal.university.dao.GroupDao;
-import com.poseal.university.dao.impl.GroupDaoHibernate;
-import com.poseal.university.model.Group;
+import com.poseal.university.service.dto.GroupDto;
+import com.poseal.university.service.group.GroupService;
 
 @WebServlet("/groups")
 public class GroupListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private GroupDao groupDao;
+    private GroupService groupService;
 
     @Override
     public void init() {
-        groupDao = new GroupDaoHibernate();
+        groupService = new GroupService();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Group> listGroups = groupDao.findAll();
+        List<GroupDto> listGroups = groupService.findAll();
 
         req.setAttribute("listGroups", listGroups);
         req.getRequestDispatcher("/listGroups.jsp").forward(req, resp);

@@ -1,5 +1,6 @@
 package com.poseal.university.model;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +23,7 @@ public class Department {
 
     @ManyToOne
     @JoinColumn(name = "faculty_id")
+    @JsonbTransient
     private Faculty faculty;
 
     public Integer getId() {
